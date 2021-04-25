@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
-      <module name="springcloud" target="1.8" />
-      <module name="springcloudapi" target="1.8" />
-      <module name="springcloudconsumeruser" target="1.8" />
-      <module name="springcloudeureka7001" target="1.8" />
-      <module name="springcloudeureka7002" target="1.8" />
-      <module name="springcloudeureka7003" target="1.8" />
-      <module name="springcloudprovideruser" target="1.8" />
-      <module name="springcloudzuul9527" target="1.8" />
-    </bytecodeTargetLevel>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springcloudprovideruser" />
+        <module name="springcloudeureka7003" />
+        <module name="springcloudeureka7002" />
+        <module name="springcloudeureka7001" />
+        <module name="springcloudzuul9527" />
+        <module name="springcloudconsumeruser" />
+        <module name="springcloudapi" />
+      </profile>
+    </annotationProcessing>
   </component>
 </project>

@@ -1,0 +1,5 @@
+com\xueqiu\SpringCloudProviderUser.class
+com\xueqiu\service\impl\UserServiceImpl.class
+com\xueqiu\service\UserService.class
+com\xueqiu\dao\UserDao.class
+com\xueqiu\controller\UserController.class

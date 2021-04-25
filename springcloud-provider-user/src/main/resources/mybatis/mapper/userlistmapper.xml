@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xueqiu.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.xueqiu.pojo.UserList" >
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="user_pass" property="userPass" />
+        <result column="user_sex" property="userSex" />
+        <result column="user_type" property="userType" />
+        <result column="user_regist" property="userRegist" />
+        <result column="user_login" property="userLogin" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                user_id,
+                user_name,
+                user_pass,
+                user_sex,
+                user_type,
+                user_regist,
+                user_login
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.xueqiu.pojo.UserList">
+        INSERT INTO user_list
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test ='null != userId'>
+                user_id,
+            </if>
+            <if test ='null != userName'>
+                user_name,
+            </if>
+            <if test ='null != userPass'>
+                user_pass,
+            </if>
+            <if test ='null != userSex'>
+                user_sex,
+            </if>
+            <if test ='null != userType'>
+                user_type,
+            </if>
+            <if test ='null != userRegist'>
+                user_regist,
+            </if>
+            <if test ='null != userLogin'>
+                user_login
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test ='null != userId'>
+                #{userId},
+            </if>
+            <if test ='null != userName'>
+                #{userName},
+            </if>
+            <if test ='null != userPass'>
+                #{userPass},
+            </if>
+            <if test ='null != userSex'>
+                #{userSex},
+            </if>
+            <if test ='null != userType'>
+                #{userType},
+            </if>
+            <if test ='null != userRegist'>
+                #{userRegist},
+            </if>
+            <if test ='null != userLogin'>
+                #{userLogin}
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteUser" >
+        DELETE FROM user_list
+        WHERE user_id = #{userId}
+    </delete>
+
+    <update id="updateUser" parameterType="com.xueqiu.pojo.UserList">
+        UPDATE user_list
+        <set>
+            <if test ='null != userName'>user_name = #{userName},</if>
+            <if test ='null != userPass'>user_pass = #{userPass},</if>
+            <if test ='null != userSex'>user_sex = #{userSex},</if>
+            <if test ='null != userType'>user_type = #{userType},</if>
+            <if test ='null != userRegist'>user_regist = #{userRegist},</if>
+            <if test ='null != userLogin'>user_login = #{userLogin}</if>
+        </set>
+        WHERE user_id = #{userId}
+    </update>
+
+
+    <select id="queryUser" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM user_list
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="queryAllUser" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM user_list
+    </select>
+
+
+    <select id="selectUsername" resultType="String">
+        SELECT  user_name
+        FROM user_list
+        WHERE user_id = #{userId}
+    </select>
+</mapper>
